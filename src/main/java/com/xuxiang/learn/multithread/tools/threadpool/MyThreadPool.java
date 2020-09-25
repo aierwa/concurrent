@@ -7,6 +7,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * 线程池的简单原理示例
  * 生产者 - 消费者模式
+ * 多个线程共享同一个阻塞队列
  *
  * @author xuxiang
  * 2020/9/14

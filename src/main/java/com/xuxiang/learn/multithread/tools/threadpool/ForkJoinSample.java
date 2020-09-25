@@ -91,7 +91,7 @@ public class ForkJoinSample {
                 int mid = (start + end) / 2;
                 WordCount wc1 = new WordCount(inputs, start, mid);
                 WordCount wc2 = new WordCount(inputs, mid, end);
-                wc1.invoke();
+                wc1.fork();
                 return merge(wc2.compute(), wc1.join());
             }
         }
@@ -106,6 +106,11 @@ public class ForkJoinSample {
             String[] words = line.split("\\s+");
             for (String word : words) {
                 map.put(word, map.get(word) == null ? 1 : map.get(word) + 1);
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             return map;
         }
